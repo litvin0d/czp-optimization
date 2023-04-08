@@ -9,6 +9,8 @@
 
     table {
         min-width: 80%;
+        height: 100%;
+        background: $black;
 
         thead {
             tr {
@@ -18,7 +20,7 @@
         }
 
         th, td {
-            padding: 64px ;
+            padding: 32px 0;
             font-family: $board-font;
             font-size: 96px;
         }

@@ -32,14 +32,6 @@ export const CheckBoard = () => {
                         </tr>
                     ))
                 }
-                <tr>
-                    <td>2</td>
-                    <td>sdfdsf</td>
-                </tr>,
-                <tr>
-                    <td>3</td>
-                    <td>dsfdsf</td>
-                </tr>
                 </tbody>
             </table>
         </div>
