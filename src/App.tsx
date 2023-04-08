@@ -1,20 +1,38 @@
 import { AuthModal } from "./components/AuthModal";
-import { LogoutBtn } from "./components/LogoutBtn";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "./redux/store";
+import { EconomistPage } from "./pages/EconomistPage";
+import { useEffect } from "react";
+import { setUser } from "./redux/userSlice";
+import { GuardPage } from "./pages/GuardPage";
 
 export const App = () => {
-    const [token, setToken] = useState(localStorage.getItem("token"));
-    // const token = localStorage.getItem("token");
+    const user = useSelector((state: RootState) => state.user);
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        const role = localStorage.getItem("role");
+        if (token && role) {
+            dispatch(setUser({ token, role }));
+        }
+    }, []);
+
+    const handlePages = () => {
+        if (user.token && user.role === "Economist") {
+            return <EconomistPage />;
+        } else if (user.token && user.role === "Guard") {
+            return <GuardPage />;
+        } else if (user.token && user.role === "Storekeeper") {
+            return "Кладовщик";
+        } else {
+            return <AuthModal />;
+        }
+    };
 
     return (
         <div className="App">
-            {
-                token ?
-                    <LogoutBtn onLogout={() => setToken(null)} /> :
-                    <AuthModal onLogin={() => setToken(localStorage.getItem("token"))} />
-            }
-            {/*<AuthModal />*/}
+            { handlePages() }
         </div>
     );
 };

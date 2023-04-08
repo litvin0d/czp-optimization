@@ -1,0 +1,36 @@
+@import "variables";
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: none;
+    background: inherit;
+    cursor: pointer;
+
+    span {
+        color: $black;
+        font-size: 18px;
+        text-transform: uppercase;
+        font-weight: 500;
+        transition: color .25s ease-in-out;
+    }
+
+    svg {
+        fill: $black;
+        margin-bottom: 3px;
+        transition: fill .25s ease-in-out;
+        width: 18px;
+        height: 18px;
+    }
+
+    &:hover {
+        span {
+            color: $red;
+        }
+
+        svg {
+            fill: $red
+        }
+    }
+}

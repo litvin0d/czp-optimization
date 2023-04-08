@@ -1,3 +1,18 @@
-$bg: #f4f4f4;
-$gray: #212529;
+@font-face {
+    font-family: "Magistral ExtraBold";
+    src: url("../assets/fonts/Magistral-ExtraBold.woff2");
+}
+
+@font-face {
+    font-family: "Proxima Nova Regular";
+    src: url("../assets/fonts/Proxima-Nova-Regular.woff2");
+}
+
+$bg: #ffffff;
+$sub-bg: #f4f4f4;
+$black: #212529;
 $blue: #113ea8;
+$red: #d02020;
+$red-bg: rgba(208, 32, 32, 0.31);
+$logo-font: "Magistral ExtraBold", sans-serif;
+$font: "Proxima Nova Regular", sans-serif;
