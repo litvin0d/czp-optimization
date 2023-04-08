@@ -12,7 +12,7 @@ export const LogoutBtn = () => {
         if (user.role === "Economist") {
             return "Экономист";
         } else if (user.role === "Guard") {
-            return "Охрана";
+            return "КПП";
         } else if (user.role === "Storekeeper") {
             return "Кладовщик";
         } else {

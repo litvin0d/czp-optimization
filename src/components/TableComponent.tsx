@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import s from "../scss/TableComponent.module.scss";
+import { ButtonStatus } from "./ButtonStatus";
 
 interface DataItem {
     id: number;
@@ -21,9 +22,9 @@ type TableRowProps = {
     data: DataItem;
 };
 
-const TableRow: React.FC<TableRowProps> = ({ data }) => (
+const TableRow: React.FC<TableRowProps> = ({ data }) => {
+    return (
     <tr>
-        <td>{data.id}</td>
         <td>{data.PassNumber}</td>
         <td>{data.CarNumber}</td>
         <td>{data.FIO}</td>
@@ -33,8 +34,9 @@ const TableRow: React.FC<TableRowProps> = ({ data }) => (
         <td>{data.ProductVolume}</td>
         <td>{data.MetricUnit}</td>
         <td>{data.status}</td>
+        <td><ButtonStatus passNumber={data.PassNumber} status={data.status} /></td>
     </tr>
-);
+)};
 
 export const TableComponent: React.FC = () => {
     const [data, setData] = useState<DataItem[]>([]);
@@ -56,7 +58,6 @@ export const TableComponent: React.FC = () => {
         <table className={s.table}>
             <thead>
             <tr>
-                {/*<th>ID</th>*/}
                 <th>Номер пропуска</th>
                 <th>Номер авто</th>
                 <th>ФИО водителя</th>
@@ -66,6 +67,7 @@ export const TableComponent: React.FC = () => {
                 <th>Объем продукции</th>
                 <th>ЕИ</th>
                 <th>Статус</th>
+                <th>Кнопка</th>
             </tr>
             </thead>
             <tbody>

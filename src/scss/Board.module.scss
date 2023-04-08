@@ -1,0 +1,33 @@
+@import "variables";
+
+.board {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background: $black;
+
+    table {
+        min-width: 80%;
+
+        thead {
+            tr {
+                color: $orange;
+                text-align: center;
+            }
+        }
+
+        th, td {
+            padding: 64px ;
+            font-family: $board-font;
+            font-size: 96px;
+        }
+
+        tbody {
+            tr {
+                text-align: center;
+                color: $orange;
+            }
+        }
+    }
+}

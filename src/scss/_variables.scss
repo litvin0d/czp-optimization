@@ -8,11 +8,20 @@
     src: url("../assets/fonts/Proxima-Nova-Regular.woff2");
 }
 
+@font-face {
+    font-family: "A LCD Nova";
+    src: url("../assets/fonts/A-LCD-Nova-.ttf");
+}
+
 $bg: #ffffff;
 $sub-bg: #f4f4f4;
 $black: #212529;
 $blue: #113ea8;
+$yellow: yellow;
+$yellow-bg: #FDFD96;
+$orange: orange;
 $red: #d02020;
 $red-bg: rgba(208, 32, 32, 0.31);
 $logo-font: "Magistral ExtraBold", sans-serif;
 $font: "Proxima Nova Regular", sans-serif;
+$board-font: "A LCD Nova", sans-serif;

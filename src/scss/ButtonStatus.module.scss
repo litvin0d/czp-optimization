@@ -1,0 +1,15 @@
+@import "variables";
+
+.button {
+    padding: 12px;
+    background: $blue;
+    color: $bg;
+    border: none;
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
+    cursor: pointer;
+
+    &:focus {
+        opacity: .5;
+    }
+}
