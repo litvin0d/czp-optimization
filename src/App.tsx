@@ -5,6 +5,7 @@ import { EconomistPage } from "./pages/EconomistPage";
 import { useEffect } from "react";
 import { setUser } from "./redux/userSlice";
 import { GuardPage } from "./pages/GuardPage";
+import { StorekeeperPage } from "./pages/StorekeeperPage";
 
 export const App = () => {
     const user = useSelector((state: RootState) => state.user);
@@ -24,7 +25,7 @@ export const App = () => {
         } else if (user.token && user.role === "Guard") {
             return <GuardPage />;
         } else if (user.token && user.role === "Storekeeper") {
-            return "Кладовщик";
+            return <StorekeeperPage />;
         } else {
             return <AuthModal />;
         }
