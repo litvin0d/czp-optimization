@@ -1,11 +1,12 @@
-import { useEffect, useState, FC } from "react";
+import { FC, useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import s from "../scss/TableComponent.module.scss";
 import { ButtonStatus } from "./ButtonStatus";
+// import { algorithm } from "../algorithm";
 
-interface DataItem {
+export interface DataItem {
     id: number;
     PassNumber: number;
     CarNumber: string;
@@ -36,7 +37,8 @@ const StoreRow: FC<TableRowProps> = ({ data }) => {
             <td>{data.status}</td>
             <td><ButtonStatus passNumber={data.PassNumber} status={data.status} /></td>
         </tr>
-    )};
+    );
+};
 
 export const StoreTable: FC = () => {
     const [data, setData] = useState<DataItem[]>([]);
@@ -48,7 +50,9 @@ export const StoreTable: FC = () => {
                 "Authorization": `Bearer ${token}`
             }
         }).then((response) => {
+            // setData(algorithm(response.data.data.drivers));
             setData(response.data.data.drivers);
+            console.log(data);
         }).catch((error) => {
             console.error(error);
         });
@@ -73,9 +77,10 @@ export const StoreTable: FC = () => {
             <tbody>
             {
                 data &&
-                data.map((rowData) => (
-                    <StoreRow key={rowData.id} data={rowData} />
-                ))}
+                data.map((rowData: DataItem) => {
+                        return <StoreRow key={rowData?.id} data={rowData} />;
+                    }
+                )}
             </tbody>
         </table>
     );
