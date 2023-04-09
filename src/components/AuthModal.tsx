@@ -19,18 +19,16 @@ export const AuthModal = () => {
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        try {
-            axios.post<LoginResponse>("https://mrsmilegod23.online/api/login", {
-                login: login.trim(),
-                password: password.trim(),
-            }).then((res) => {
-                dispatch(setUser(res.data))
-                setError(false);
-            });
-        } catch (e) {
+        axios.post<LoginResponse>("https://mrsmilegod23.online/api/login", {
+            login: login.trim(),
+            password: password.trim(),
+        }).then((res) => {
+            dispatch(setUser(res.data))
+            setError(false);
+        }).catch((e) => {
             setError(true);
             console.error(e);
-        }
+        });
     };
 
     return (
