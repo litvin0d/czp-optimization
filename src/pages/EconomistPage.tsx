@@ -11,7 +11,10 @@ export const EconomistPage = () => {
             headers: {
                 "Authorization": `Bearer ${token}`,
             }
-        }).then((res) => console.log(res.data)).catch((error) => {
+        }).then((res) => {
+            console.log(res.data);
+            alert("Пропуск успешно добавлен!")
+        }).catch((error) => {
             console.error(error);
         })
     }

@@ -12,8 +12,19 @@ export const ButtonStatus = ({ passNumber, status }: ButtonStatusProps) => {
     const token = useSelector((state: RootState) => state.user.token);
 
     const handleStatus = () => {
-        if (status === "Ожидает") {
-            // return;
+        console.log(status)
+        if (status === "Ожидание") {
+            axios.post("https://mrsmilegod23.online/api/storekeeper/waiting/drivers", {
+                PassNumber: passNumber,
+            }, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }).then(() => {
+                window.location.reload();
+            }).catch((e) => {
+                console.error(e);
+            });
         } else {
             axios.post("https://mrsmilegod23.online/api/guard/pass", {
                 PassNumber: passNumber,
@@ -21,8 +32,7 @@ export const ButtonStatus = ({ passNumber, status }: ButtonStatusProps) => {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
-            }).then((res) => {
-                console.log(res.data);
+            }).then(() => {
                 window.location.reload();
             }).catch((e) => {
                 console.error(e);
@@ -31,15 +41,12 @@ export const ButtonStatus = ({ passNumber, status }: ButtonStatusProps) => {
     };
 
     const btnNameHandler = () => {
-        // console.log()
         if (status === "Отсутствует") {
             return "Прибыл";
         } else if (status === "Прибыл") {
             return "Ожидает";
-        } else if (status === "Ожидает") {
-            return "ПОШЕЛ НАХУЙ";
-        } else {
-            return "fdsf";
+        } else if (status === "Ожидание") {
+            return "Завершить";
         }
     };
 

@@ -25,7 +25,6 @@ export const AuthModal = () => {
                 password: password.trim(),
             }).then((res) => {
                 dispatch(setUser(res.data))
-                console.log("Login successful!");
                 setError(false);
             });
         } catch (e) {
